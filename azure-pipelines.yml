@@ -14,14 +14,16 @@ parameters:
     type: string
     default: ubuntu-latest
   
-pool:
-  vmImage: ubuntu-latest
+jobs:
+- job: Build
+  pool:
+    vmImage: ${{ parameters.vmImage }}
+  steps:
+  - script: npm install
+  - script: npm test
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-- script: npm install
-- script: npm test
 
 # - script: echo '$(Build.BuildNumber)'
 #   displayName: 'Displays Build Number'
