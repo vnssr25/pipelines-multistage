@@ -12,7 +12,8 @@ resources:
   repositories:
     - repository: templates
       type: github
-      name: Contoso/BuildTemplates
+      name: vnssr25/pipelines-multistage
+
 
 jobs:
-- template: common.yml@templates  # Template reference
+- template: azure-pipelines.yml@templates 
