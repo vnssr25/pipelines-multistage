@@ -9,15 +9,22 @@ trigger:
 
 pr: none
 
+parameters:
+  - name: vmImage
+    type: string
+    default: ubuntu-latest
+  
 pool:
   vmImage: ubuntu-latest
 
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+- script: npm install
+- script: npm test
 
-- script: echo '$(Build.BuildNumber)'
-  displayName: 'Displays Build Number'
+# - script: echo '$(Build.BuildNumber)'
+#   displayName: 'Displays Build Number'
 # - script: |
 #     echo Add other tasks to build, test, and deploy your project.
 #     echo See https://aka.ms/yaml
