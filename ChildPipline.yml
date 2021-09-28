@@ -22,6 +22,7 @@ stages:
    - template: azure-pipelines.yml@templates 
 - stage: Test
   displayName: Test
+  dependsOn: []
   jobs:
     - job : TestonWindows
       steps:
