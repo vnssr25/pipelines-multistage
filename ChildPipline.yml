@@ -15,6 +15,22 @@ resources:
       name: vnssr25/pipelines-multistage
       endpoint: vnssr25
 
-
-jobs:
-- template: azure-pipelines.yml@templates 
+stages:
+- stage: Build
+  displayName: NPM step
+  jobs:
+   - template: azure-pipelines.yml@templates 
+- stage: Test
+  displayName: Test
+  jobs:
+    - job : TestonWindows
+      steps:
+        - script: echo Testing on Windows!
+    - job: TestonLinux
+      steps:
+        - script: echo Testing on Linux!
+- stage: Deploy
+  jobs:
+  - job: Deploy
+    steps:
+    - script: echo Deploying the code!
