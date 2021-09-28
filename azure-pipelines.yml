@@ -20,7 +20,8 @@ jobs:
     vmImage: ${{ parameters.vmImage }}
   steps:
   - script: npm install
-  - script: npm test
+    displayName: NPM installation
+  # - script: npm test
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
 
