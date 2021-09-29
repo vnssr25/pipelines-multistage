@@ -13,7 +13,10 @@ parameters:
   - name: vmImage
     type: string
     default: ubuntu-latest
-  
+  - name : printMyName
+    type : string
+    default: RamGrandhisila
+    
 jobs:
 - job: Build
   pool:
