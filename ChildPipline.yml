@@ -16,7 +16,7 @@ resources:
       endpoint: vnssr25
   pipelines:
     - pipeline: pipelineTrigger
-      source: vnssr25.pipelines-multistage
+      source: vnssr25.pipelines-dotnet-core
       trigger:
        stages:
          - PreProd
