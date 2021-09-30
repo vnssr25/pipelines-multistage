@@ -20,6 +20,8 @@ stages:
   displayName: NPM step
   jobs:
    - template: azure-pipelines.yml@templates 
+     parameters:
+      vmImage: 'windows-latest'
 - stage: Test
   displayName: Test
   dependsOn: []
@@ -35,3 +37,19 @@ stages:
   - job: Deploy
     steps:
     - script: echo Deploying the code!
+- stage: PreProd
+  jobs:
+   - deployment: preprod
+     displayName: Deploy in Pre Prod
+     pool:
+      name: Hosted Windows 2019 with VS2019 
+      vmImage: windows-latest 
+     environment: preprod
+     strategy:
+      runOnce:
+        deploy:
+          steps:
+            - script: echo preprod deployment
+            - pwsh: |
+                   Write-Host "Mulitline preprod Script1"
+                   Write-Host "Mulitline preprod Script2"
